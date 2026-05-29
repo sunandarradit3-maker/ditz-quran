@@ -32,7 +32,8 @@ const els = {
   toast: $('#toast'),
   qariSelect: $('#qariSelect'),
   commandDialog: $('#commandDialog'),
-  sidebar: $('#sidebar')
+  sidebar: $('#sidebar'),
+  sidebarBackdrop: $('#sidebarBackdrop')
 };
 
 const juzDescriptions = {
@@ -125,8 +126,16 @@ function setArabicFontScale(scale) {
   localStorage.setItem('ditz-font-scale', state.fontScale);
 }
 
+function openMobileSidebar() {
+  els.sidebar?.classList.add('open');
+  document.body.classList.add('sidebar-open');
+  els.sidebar?.setAttribute('aria-hidden', 'false');
+}
+
 function closeMobileSidebar() {
-  els.sidebar.classList.remove('open');
+  els.sidebar?.classList.remove('open');
+  document.body.classList.remove('sidebar-open');
+  els.sidebar?.setAttribute('aria-hidden', 'true');
 }
 
 function renderJuzGrid() {
@@ -497,8 +506,9 @@ function setupEvents() {
   $('#fontMinus').addEventListener('click', () => setArabicFontScale(state.fontScale - 0.1));
   $('#scrollTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   $('#focusToggle').addEventListener('click', () => document.body.classList.toggle('focus-mode'));
-  $('#openSidebar').addEventListener('click', () => els.sidebar.classList.add('open'));
+  $('#openSidebar').addEventListener('click', openMobileSidebar);
   $('#closeSidebar').addEventListener('click', closeMobileSidebar);
+  els.sidebarBackdrop?.addEventListener('click', closeMobileSidebar);
   $('#closeSearch').addEventListener('click', () => els.searchResultsWrap.classList.add('hidden'));
   $('#tafsirButton').addEventListener('click', loadTafsir);
   $('#closeTafsir').addEventListener('click', () => els.tafsirDrawer.classList.add('hidden'));
@@ -524,7 +534,7 @@ function setupEvents() {
       els.commandDialog.showModal();
     }
     if (event.key === 'Escape') {
-      els.sidebar.classList.remove('open');
+      closeMobileSidebar();
     }
   });
 

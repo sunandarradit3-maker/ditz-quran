@@ -852,3 +852,67 @@ h1 {
     justify-content: start;
   }
 }
+
+/* ===== Mobile sidebar blur fix by DiTz STORE ===== */
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  opacity: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(79, 209, 165, 0.16), transparent 36rem),
+    radial-gradient(circle at 80% 90%, rgba(244, 201, 93, 0.14), transparent 34rem),
+    rgba(2, 6, 23, 0.52);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  transition: opacity 0.28s ease;
+}
+
+body.sidebar-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+body.sidebar-open .sidebar-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 1180px) {
+  .sidebar {
+    z-index: 100;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 30px;
+    background: rgba(7, 11, 19, 0.82);
+    box-shadow: 0 34px 110px rgba(0, 0, 0, 0.62);
+    backdrop-filter: blur(28px) saturate(158%);
+    -webkit-backdrop-filter: blur(28px) saturate(158%);
+    will-change: transform;
+  }
+
+  [data-theme="light"] .sidebar {
+    background: rgba(255, 250, 240, 0.88);
+    box-shadow: 0 34px 110px rgba(85, 64, 34, 0.25);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar .glass {
+    background: rgba(18, 27, 44, 0.72);
+    backdrop-filter: blur(18px) saturate(145%);
+    -webkit-backdrop-filter: blur(18px) saturate(145%);
+  }
+
+  [data-theme="light"] .sidebar .glass {
+    background: rgba(255, 255, 255, 0.72);
+  }
+}
+
+@media (min-width: 1181px) {
+  .sidebar-backdrop {
+    display: none;
+  }
+}
