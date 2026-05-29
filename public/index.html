@@ -1,1 +1,164 @@
+<!doctype html>
+<html lang="id" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DiTz STORE Qur'an 30 Juz dengan terjemahan Bahasa Indonesia, audio, bookmark, pencarian, tafsir, dan UI premium." />
+    <meta name="theme-color" content="#070b13" />
+    <title>DiTz STORE | Qur'an 30 Juz</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://equran.id" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
 
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand-card glass">
+          <div class="brand-logo">د</div>
+          <div>
+            <p class="eyebrow">DiTz STORE</p>
+            <h1>Qur'an 30 Juz</h1>
+          </div>
+          <button class="icon-button mobile-close" id="closeSidebar" aria-label="Tutup menu">×</button>
+        </div>
+
+        <div class="search-panel glass">
+          <label for="surahSearch">Cari surat</label>
+          <div class="input-wrap">
+            <span>⌕</span>
+            <input id="surahSearch" type="search" placeholder="Al-Fatihah, 2, Rahmat..." autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="tabs glass" role="tablist" aria-label="Navigasi utama">
+          <button class="tab active" data-panel="surahPanel">Surat</button>
+          <button class="tab" data-panel="juzPanel">Juz</button>
+          <button class="tab" data-panel="bookmarkPanel">Bookmark</button>
+        </div>
+
+        <div class="panel active" id="surahPanel">
+          <div class="surah-list skeleton-list" id="surahList"></div>
+        </div>
+
+        <div class="panel" id="juzPanel">
+          <div class="juz-grid" id="juzGrid"></div>
+        </div>
+
+        <div class="panel" id="bookmarkPanel">
+          <div class="bookmark-list" id="bookmarkList"></div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar glass">
+          <button class="icon-button menu-button" id="openSidebar" aria-label="Buka menu">☰</button>
+          <div class="global-search">
+            <span>AI Search</span>
+            <input id="globalSearch" type="search" placeholder="Cari ayat/terjemah: sabar, shalat, rahmat..." autocomplete="off" />
+            <button id="voiceSearch" class="ghost-button" title="Voice search">🎙️</button>
+          </div>
+          <div class="topbar-actions">
+            <select id="qariSelect" class="select" aria-label="Pilih qari">
+              <option value="05">Misyari Rasyid</option>
+              <option value="01">Abdullah Al-Juhany</option>
+              <option value="02">Abdul Muhsin</option>
+              <option value="03">Abdurrahman As-Sudais</option>
+              <option value="04">Ibrahim Al-Dossari</option>
+              <option value="06">Yasser Al-Dosari</option>
+            </select>
+            <button class="ghost-button" id="fontMinus">A-</button>
+            <button class="ghost-button" id="fontPlus">A+</button>
+            <button class="ghost-button" id="themeToggle">🌙</button>
+          </div>
+        </header>
+
+        <section class="hero glass" id="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Premium Islamic Experience · 2026</p>
+            <h2>Baca Qur'an 30 juz dengan tampilan nyaman, cepat, dan modern.</h2>
+            <p class="hero-text">Lengkap dengan teks Arab, latin, terjemahan Indonesia, audio ayat, tafsir, bookmark, riwayat terakhir, mode fokus, dan pencarian cerdas.</p>
+            <div class="hero-actions">
+              <button class="primary-button" id="continueReading">Lanjutkan Bacaan</button>
+              <button class="secondary-button" id="openCommand">Command Palette ⌘K</button>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card"><strong>114</strong><span>Surat</span></div>
+            <div class="stat-card"><strong>30</strong><span>Juz</span></div>
+            <div class="stat-card"><strong>6.236</strong><span>Ayat</span></div>
+            <div class="stat-card"><strong>6</strong><span>Qari</span></div>
+          </div>
+        </section>
+
+        <section class="reader-toolbar glass">
+          <div>
+            <p class="eyebrow" id="readerMode">Mode Surat</p>
+            <h3 id="readerTitle">Pilih surat untuk mulai membaca</h3>
+            <p id="readerSubtitle">Terjemahan Bahasa Indonesia tersedia di setiap ayat.</p>
+          </div>
+          <div class="toolbar-actions">
+            <button class="ghost-button" id="tafsirButton" disabled>Tafsir</button>
+            <button class="ghost-button" id="focusToggle">Mode Fokus</button>
+            <button class="ghost-button" id="scrollTop">↑ Atas</button>
+          </div>
+        </section>
+
+        <section class="search-results glass hidden" id="searchResultsWrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Hasil pencarian</p>
+              <h3 id="searchTitle">Menunggu kata kunci...</h3>
+            </div>
+            <button class="icon-button" id="closeSearch">×</button>
+          </div>
+          <div id="searchResults" class="search-results"></div>
+        </section>
+
+        <section class="tafsir-drawer glass hidden" id="tafsirDrawer">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Tafsir</p>
+              <h3 id="tafsirTitle">Tafsir Surat</h3>
+            </div>
+            <button class="icon-button" id="closeTafsir">×</button>
+          </div>
+          <div id="tafsirContent" class="tafsir-content"></div>
+        </section>
+
+        <section class="reader" id="reader">
+          <div class="empty-state glass">
+            <div class="empty-icon">﷽</div>
+            <h3>Assalamu'alaikum, selamat datang di DiTz STORE Qur'an.</h3>
+            <p>Pilih surat atau juz di sidebar untuk membaca Qur'an lengkap dengan terjemahan Bahasa Indonesia.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="command-dialog glass" id="commandDialog">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Command Palette</p>
+          <h3>Akses cepat</h3>
+        </div>
+        <button class="icon-button" id="closeCommand">×</button>
+      </div>
+      <div class="command-grid">
+        <button data-action="surah:1">Buka Al-Fatihah</button>
+        <button data-action="surah:18">Buka Al-Kahf</button>
+        <button data-action="surah:36">Buka Yasin</button>
+        <button data-action="surah:67">Buka Al-Mulk</button>
+        <button data-action="juz:30">Buka Juz Amma</button>
+        <button data-action="theme">Ganti Tema</button>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
