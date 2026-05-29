@@ -1,0 +1,23 @@
+{
+  "name": "ditz-store-quran",
+  "version": "1.0.0",
+  "description": "DiTz STORE - Website Qur'an 30 Juz dengan terjemahan Bahasa Indonesia, full-stack Node.js + Vanilla UI premium.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "quran",
+    "indonesia",
+    "ditz-store",
+    "full-stack",
+    "nodejs"
+  ],
+  "author": "DiTz STORE",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
