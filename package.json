@@ -1,23 +1,8 @@
 {
-  "name": "ditz-store-quran",
+  "name": "ditz-quran",
   "version": "1.0.0",
-  "description": "DiTz STORE - Website Qur'an 30 Juz dengan terjemahan Bahasa Indonesia, full-stack Node.js + Vanilla UI premium.",
-  "main": "server.js",
-  "type": "module",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
-  },
-  "keywords": [
-    "quran",
-    "indonesia",
-    "ditz-store",
-    "full-stack",
-    "nodejs"
-  ],
-  "author": "DiTz STORE",
-  "license": "MIT",
-  "engines": {
-    "node": ">=18.0.0"
-  }
+  "private": true,
+  "scripts": {"dev":"next dev","build":"next build","start":"next start","lint":"next lint"},
+  "dependencies": {"next":"15.5.0","react":"19.1.1","react-dom":"19.1.1","lucide-react":"0.468.0"},
+  "devDependencies": {"@tailwindcss/postcss":"4.1.13","tailwindcss":"4.1.13","typescript":"5.9.2","@types/node":"24.3.0","@types/react":"19.1.13","@types/react-dom":"19.1.9"}
 }
