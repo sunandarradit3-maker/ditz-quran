@@ -1,16 +1,1 @@
-{
-  "name": "DiTz STORE Qur'an 30 Juz",
-  "short_name": "DiTz Qur'an",
-  "description": "Website Qur'an 30 juz dengan terjemahan Bahasa Indonesia.",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#070b13",
-  "theme_color": "#070b13",
-  "icons": [
-    {
-      "src": "/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
-    }
-  ]
-}
+{"name":"DiTz Qur’an","short_name":"DiTz Qur’an","start_url":"/","display":"standalone","background_color":"#05070a","theme_color":"#05070a","description":"Baca Qur’an, dengarkan murottal, dan belajar Iqro."}
